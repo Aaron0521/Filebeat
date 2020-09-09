@@ -1,0 +1,56 @@
+filebeat.inputs:
+
+- type: log
+
+  enabled: true
+
+  scan_frequency: 1s
+
+  paths:
+    - C:\Users\aaron\PycharmProjects\untitled\logcenter\logs\*.log
+
+#第二个路径
+#- type: log
+#
+#  enabled: true
+#
+#  scan_frequency: 1s
+#
+#  paths:
+#    - C:\Users\aaron\PycharmProjects\untitled\logcenter\log2\*.log
+
+
+output.file:
+
+  enabled: true
+
+  path: C:\Users\aaron\Desktop\test
+
+  filename: test_log.txt
+
+#output.logstash:
+
+#  enabled: true
+#
+#  hosts: ["localhost:5044"]
+
+#  proxy_url: socks5://127.0.0.1:7777
+
+#  index: "test"
+#
+#setup.template.name: "test"
+#
+#setup.template.pattern: "test-*"
+#
+#setup.template.enabled: false
+#
+#setup.template.overwrite: true
+#
+#setup.ilm.enabled: false
+
+
+processors:
+
+  - include_fields:
+
+      fields: ["message"]
